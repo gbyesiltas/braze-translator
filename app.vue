@@ -1,6 +1,6 @@
+
 <template>
-  <div>
-    <NuxtRouteAnnouncer />
-    <NuxtWelcome />
+  <div class="py-12">
+    <LinkTranslator />
   </div>
 </template>
