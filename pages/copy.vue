@@ -45,9 +45,7 @@ const translation = computed(() => {
         
 
             <span>Braze translation</span>
-            <div class="p-12 bg-gray-200 font-mono">
-                {{ translation }}
-            </div>
+            <TranslationResult :resultText="translation" />
         </div>
     </div>
 </template>

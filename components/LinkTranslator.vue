@@ -26,8 +26,6 @@ const translation = computed(() => getBrazeTranslationForLink(inputLink.value));
         <input v-model="inputLink" placeholder="https://www.example.com/some-path" class="w-full border mb-12 p-4" />
 
         <span>Braze translation</span>
-        <div class="p-12 bg-gray-200 font-mono">
-            {{ translation }}
-        </div>
+        <TranslationResult :result-text="translation" />
     </div>
 </template>
