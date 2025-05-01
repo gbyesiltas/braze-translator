@@ -19,10 +19,14 @@ const translations = ref<Record<Locale, string>>({
 });
 
 const translation = computed(() => {
-    const translationText = LOCALES.filter((locale) => !!translations.value[locale.code]).map(locale => {
-        const ifStatement = "{% elsif";
-        return `${ifStatement} \${language} == '${locale.code}' %}${translations.value[locale.code]}`;
-    }).join("");
+    // Only include languages that have non-empty translations
+    const translationText = LOCALES
+        .filter((locale) => translations.value[locale.code] && translations.value[locale.code].trim() !== "")
+        .map(locale => {
+            const ifStatement = "{% elsif";
+            return `${ifStatement} \${language} == '${locale.code}' %}${translations.value[locale.code]}`;
+        }).join("");
+
     return `{% if \${language} == 'en' %}${englishCopy.value}${translationText}{% else %}${englishCopy.value}{% endif %}`;
 });
 
