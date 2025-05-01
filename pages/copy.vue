@@ -24,7 +24,7 @@ const translation = computed(() => {
         return `${ifStatement} \${language} == '${locale.code}' %}${translations.value[locale.code]}`;
     }).join("");
     
-    return`{% if \${language} == 'en' %}${englishCopy.value}${translationText}{% endif %}`;
+    return`{% if \${language} == 'en' %}${englishCopy.value}${translationText}{% else %}${englishCopy.value}{% endif %}`;
 })
 </script>
 
